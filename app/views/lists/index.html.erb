@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Lists</h1>
+
+<div id="lists">
+  <% if !@lists.empty?   %>
+  <% @lists.each do |list| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    <%= link_to list.name, list_path(list) %>
+    </div>
+
+  <% end %>
+  <% end %>
+</div>
+
+<%= link_to "New list", new_list_path %>

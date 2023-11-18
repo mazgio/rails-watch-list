@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+  <%# render partial: "movies/movie"%>
+
+<p><strong><%= @list.name %></strong></p>
+    
+
+<%#= render "bookmarks/form" %>
+
+<div>
+  <% @list.bookmarks.each do |bookmark|%>
+  <h2><%=bookmark.movie.title  %></h2>
+   <%= image_tag(bookmark.movie.poster_url)   %>
+
+  
+  <% end %>
+  <%# link_to "Add this movie", edit_movie_path(@movie) %> 
+  <%# link_to "Back to movies", movies_path %>
+
+  <%# button_to "Destroy this movie", @movie, method: :delete %>
+</div>
+      <%= link_to "Delete",
+        list_path(@list),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
+<br>
+ <%= link_to "add bookmark",    new_list_bookmark_path(@list) %>
+<p> <%= link_to "lists", lists_path %></p>  

@@ -1,0 +1,6 @@
+<%= simple_form_for @bookmark do |f| %>
+  <%= f.input :movie_id, :collection => @movies %>
+  <%= f.input :list_id, as: :hidden, input_html: { :value => @list.id }%>
+  <%= f.input :comment %>
+  <%= f.submit %>
+<% end %>
