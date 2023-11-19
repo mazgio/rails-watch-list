@@ -1,9 +1,16 @@
-<h1>New list</h1>
+<div><%= render "navbar", list: @list%></div>
+<!-- app/views/pages/home.html.erb -->
+<div class="banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('<%= asset_path("movie_banner.jpg") %>')">
+  <div class="container">
+    <h1>Cinema where you can <strong>find your movie</strong></h1>
+    <p>Create your favorite list of movies</p>
+  </div>
+</div>
 
 <%= render "form", list: @list %>
 
 <br>
 
-<div>
+<div class="d-flex text-align-center">
   <%= link_to "Back to lists", lists_path %>
 </div>

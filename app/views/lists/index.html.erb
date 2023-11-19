@@ -1,16 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<%= render "navbar", list: @list %>
 
-<h1>Lists</h1>
-
-<div id="lists">
-  <% if !@lists.empty?   %>
-  <% @lists.each do |list| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-    <%= link_to list.name, list_path(list) %>
-    </div>
-
-  <% end %>
-  <% end %>
+<div class="d-flex justify-content-around">
+  <div class="align-items-center">
+    <% if !@lists.empty? %>
+      <% @lists.each do |list| %>
+        <% if list.photo.present? && list.photo.key.present? %>
+        <%= link_to list_path(list), class: "list-name" do %>
+          <div class="my-4 card-category"  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')"> <p><%= list.name %></p></div>
+          <% end %>
+        <% else %>
+          <%# raise %>
+         <div class="m-auto"><%= image_tag "default_image.jpg", height: 300, width: 400 %></div> 
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New list", new_list_path %>
